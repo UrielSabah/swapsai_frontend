@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { SendEmail } from "@/api/integrations";
 import { createPageUrl } from "@/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -133,25 +132,25 @@ export default function Results() {
   const scheduleVisit = async () => {
     setSchedulingVisit(true);
     try {
-      await SendEmail({
-        to: userData.contact_email,
-        subject: `Office Visit Scheduled - ${selectedOffice.name}`,
-        body: `Dear ${userData.company_name},
-
-Thank you for your interest in ${selectedOffice.name}. We've received your visit request and our team will contact you shortly to confirm the viewing details.
-
-Office Details:
-- Location: ${selectedOffice.location}
-- Size: ${selectedOffice.size_sqm} sqm
-- Price: $${selectedOffice.price_per_month}/month
-- Capacity: ${selectedOffice.employees_capacity} employees
-
-The office includes these amenities:
-${selectedOffice.amenities ? selectedOffice.amenities.map(a => `- ${a}`).join('\n') : 'Information not available'}
-
-Best regards,
-Office Finder Team`
-      });
+//       await SendEmail({
+//         to: userData.contact_email,
+//         subject: `Office Visit Scheduled - ${selectedOffice.name}`,
+//         body: `Dear ${userData.company_name},
+//
+// Thank you for your interest in ${selectedOffice.name}. We've received your visit request and our team will contact you shortly to confirm the viewing details.
+//
+// Office Details:
+// - Location: ${selectedOffice.location}
+// - Size: ${selectedOffice.size_sqm} sqm
+// - Price: $${selectedOffice.price_per_month}/month
+// - Capacity: ${selectedOffice.employees_capacity} employees
+//
+// The office includes these amenities:
+// ${selectedOffice.amenities ? selectedOffice.amenities.map(a => `- ${a}`).join('\n') : 'Information not available'}
+//
+// Best regards,
+// Office Finder Team`
+//       });
 
       setShowVisitDialog(false);
       setSelectedOffice(null);
